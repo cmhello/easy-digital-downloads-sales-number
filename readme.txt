@@ -7,11 +7,11 @@ Tested up to: 4.1.1
 Stable tag: 1.0
 License: GPLv2
 
-Display how many sales were made for certain product on the product purchase button area.
+EDD extension plugin for displaying how many sales were made for certain product on the product purchase button area.
 
 == Description ==
 
-Show how many sales were made for certain product on the product purchase button area. See screenshots for examples. There is no setting needed. The sales number will be displayed as long as the product has at least one sale.
+An EDD extension plugin. Show how many sales were made for certain product on the product purchase button area. See screenshots for examples. There is no setting needed. The sales number will be displayed as long as the product has at least one sale.
 
 == Installation ==
 
