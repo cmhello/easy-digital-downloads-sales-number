@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Easy Digital Downloads - Sales Number
  * Plugin URI: https://wordpress.org/plugins/easy-digital-downloads-sales-number/
- * Description: Display how many sales were made for certain product on the product purchase button area.
+ * Description: EDD extension plugin for displaying how many sales were made for certain product on the product purchase button area.
  * Version: 1.0
  * Author: Yudhistira Mauris
  * Author URI: http://www.yudhistiramauris.com/
