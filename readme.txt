@@ -1,10 +1,10 @@
 === Easy Digital Downloads - Sales Number ===
 Contributors: maurisrx
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D2ZLXZ8VQKPE2
-Tags: EDD, ecommerce, downloads, extension,
+Tags: EDD, ecommerce, downloads, extension, Easy Digital Downloads,
 Requires at least: 4.0
-Tested up to: 4.1.1
-Stable tag: 1.0
+Tested up to: 4.3
+Stable tag: 1.0.1
 License: GPLv2
 
 EDD extension plugin for displaying how many sales were made for certain product on the product purchase button area.
@@ -41,6 +41,10 @@ You can use those CSS classes and add new CSS rules to your theme's styles.css.
 2. Plugin in action
 
 == Changelog ==
+
+= 1.0.1 =
+* Fix: disable sales number on free product
+* Improve: create a separate HTML output function
 
 = 1.0 =
 * Initial release.
