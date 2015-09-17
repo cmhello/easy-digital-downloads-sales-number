@@ -3,7 +3,7 @@
  * Plugin Name: Easy Digital Downloads - Sales Number
  * Plugin URI: https://wordpress.org/plugins/easy-digital-downloads-sales-number/
  * Description: EDD extension plugin for displaying how many sales were made for certain product on the product purchase button area.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Author: Yudhistira Mauris
  * Author URI: http://www.yudhistiramauris.com/
  * Text Domain: eddsn
@@ -79,7 +79,10 @@ function eddsn_sales_number_purchase_link_top() {
 	
 	$eddsn_download_id = get_the_ID();
 
-	eddsn_output_sales_number( $eddsn_download_id, 'before-link' );
+	if ( ! edd_has_variable_prices( $eddsn_download_id ) ) {
+		
+		eddsn_output_sales_number( $eddsn_download_id, 'before-link' );
+	}
 }
 add_action( 'edd_purchase_link_top', 'eddsn_sales_number_purchase_link_top' );
 
@@ -92,7 +95,11 @@ function eddsn_sales_number_before_price_options() {
 
 	$eddsn_download_id = get_the_ID();
 
-	eddsn_output_sales_number( $eddsn_download_id, 'before-price' );
+	if ( edd_has_variable_prices( $eddsn_download_id ) ) {
+
+		eddsn_output_sales_number( $eddsn_download_id, 'before-price' );
+	}
+
 }
 add_action( 'edd_before_price_options', 'eddsn_sales_number_before_price_options' );
 
@@ -100,14 +107,23 @@ function eddsn_output_sales_number( $download_id, $class_name = '' ) {
 
 	$eddsn_variable_pricing = edd_has_variable_prices( $download_id );
 	$eddsn_product_price    = edd_get_download_price( $download_id );
+	$eddsn_sales_number     = edd_get_download_sales_stats( $download_id );
 
 	if ( $eddsn_variable_pricing || 0 < $eddsn_product_price ) {
-
-		$eddsn_sales_number = edd_get_download_sales_stats( $download_id );
 
 		if ( $eddsn_sales_number > 0 ) {
 
 			$eddsn_sales_text = $eddsn_sales_number > 1 ? _x( 'Sales', 'Plural form', 'eddsn' ) : _x( 'Sale', 'Singular form', 'eddsn' );
+
+			$html = '<div class="edd-sales-number-' . $class_name . '">' . $eddsn_sales_number . ' ' . $eddsn_sales_text . '</div>';
+			
+			echo $html;
+		}
+	} elseif ( 0 == $eddsn_product_price ) {
+
+		if ( $eddsn_sales_number > 0 ) {
+
+			$eddsn_sales_text = $eddsn_sales_number > 1 ? _x( 'Downloads', 'Plural form', 'eddsn' ) : _x( 'Download', 'Singular form', 'eddsn' );
 
 			$html = '<div class="edd-sales-number-' . $class_name . '">' . $eddsn_sales_number . ' ' . $eddsn_sales_text . '</div>';
 			
